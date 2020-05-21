@@ -1,0 +1,86 @@
+
+<dx-data-grid
+  #templatesGrid
+  class="dx-card wide-card"
+  [dataSource]="dataSource"
+  [showBorders]="false"
+  [focusedRowEnabled]="true"
+  [focusedRowIndex]="0"
+  [columnAutoWidth]="true"
+  [columnHidingEnabled]="true"
+  [rowAlternationEnabled]="true"
+  columnResizingMode="widget"
+  [allowColumnResizing]="true"
+  [showColumnLines]="true"
+  [width]="100 + '%'"
+  [height]="100 + '%'"
+  [allowColumnReordering]="true"
+>
+  <dxo-row-dragging
+    [allowReordering]="true"
+    [onReorder]="onReorder"
+    [showDragIcons]="false"
+  ></dxo-row-dragging>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showNavigationButtons]="true"
+    [showPageSizeSelector]="true"
+    [showInfo]="true"
+    [allowedPageSizes]="[10, 20, 50]"
+  >
+  </dxo-pager>
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+
+  <dxi-column
+    dataField="name"
+    [width]="100+'%'"
+    caption="Template name"
+
+    [allowResizing]="false"
+  >
+  </dxi-column>
+<!--  <dxi-column-->
+<!--    dataField="name"-->
+<!--    [width]="190"-->
+<!--    caption="Name"-->
+<!--    [hidingPriority]="8"-->
+<!--  >-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="price"-->
+<!--    [width]="120"-->
+<!--    caption="Price"-->
+<!--    [hidingPriority]="8"-->
+<!--  >-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    caption="Preview"-->
+<!--    dataField="imageUrl"-->
+<!--    [width]="150"-->
+<!--    [allowFiltering]="false"-->
+<!--    [allowSorting]="false"-->
+<!--    cellTemplate="cellTemplate"-->
+<!--  ></dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="quantity"-->
+<!--    [width]="100"-->
+<!--    caption="Quantity"-->
+<!--    [hidingPriority]="8"-->
+<!--  >-->
+<!--  </dxi-column>-->
+
+<!--  <dxi-column-->
+<!--    dataField="description"-->
+<!--    [width]="250"-->
+<!--    caption="Description"-->
+<!--    [hidingPriority]="8"-->
+<!--  >-->
+<!--  </dxi-column>-->
+<!--  <div *dxTemplate="let data of 'cellTemplate'">-->
+<!--    <img [src]="data.value" />-->
+<!--  </div>-->
+</dx-data-grid>

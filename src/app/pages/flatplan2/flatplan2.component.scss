@@ -1,0 +1,34 @@
+.main {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+}
+.layout {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  height: 100%;
+}
+.publications {
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  padding-left: 2px;
+}
+
+.fiftyPercentHeight {
+  height: 50%;
+}
+
+.spreadsGallery {
+  height: 90%;
+}
+

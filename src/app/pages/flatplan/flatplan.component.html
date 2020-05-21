@@ -1,0 +1,19 @@
+<div class="main">
+  <app-flatplantoolbar class="flatToolbar"></app-flatplantoolbar>
+  <div class="layout">
+
+    <div class="publications">
+      <div>
+<!--          <app-spreadsgallery class="spreadsGallery"></app-spreadsgallery>-->
+        <app-lazyspreads></app-lazyspreads>
+      </div>
+    </div>
+
+    <div class="content" *ngIf="contentVisible==false">
+      <app-bucketsgrid class="fiftyPercentHeight bucketsGrid"></app-bucketsgrid>
+      <button draggable="true"></button>
+      <app-templatesgrid class="fiftyPercentHeight"></app-templatesgrid>
+    </div>
+
+  </div>
+</div>

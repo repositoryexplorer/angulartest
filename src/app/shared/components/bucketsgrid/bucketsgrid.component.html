@@ -1,0 +1,32 @@
+<dx-tree-list
+  id="employees"
+  [dataSource]="bucketsFlatList"
+  rootValue="-1"
+  keyExpr="id"
+  [showRowLines]="true"
+  [showBorders]="true"
+  parentIdExpr="parentId"
+  [columnAutoWidth]="true"
+  focusedRowEnabled="true">
+
+  <dxo-row-dragging
+    [onDragChange]="onDragChange"
+    [onReorder]="onReorder"
+    [allowDropInsideItem]="allowDropInsideItem"
+    [allowReordering]="allowReordering"
+    [showDragIcons]="showDragIcons"
+    group="draggingGroupName"
+  ></dxo-row-dragging>
+  <dxi-column dataField="text" caption="Label"></dxi-column>
+  <dxi-column cellTemplate="employeeTemplate"></dxi-column>
+
+  <div *dxTemplate="let options of 'employeeTemplate'">
+    <img width="32" height="32" draggable="true" src="/assets/img/drag.svg" (drag)="onDragStart($event, options.data)"/>
+  </div>
+
+<!--  <dxi-column dataField="Full_Name"></dxi-column>-->
+<!--  <dxi-column dataField="City"></dxi-column>-->
+<!--  <dxi-column dataField="State"></dxi-column>-->
+<!--  <dxi-column dataField="Mobile_Phone"></dxi-column>-->
+<!--  <dxi-column dataField="Hire_Date" dataType="date"></dxi-column>-->
+</dx-tree-list>

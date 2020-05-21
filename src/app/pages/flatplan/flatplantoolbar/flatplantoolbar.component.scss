@@ -1,0 +1,42 @@
+.toolbar {
+  height: 40px;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+.button1:hover {
+  background-color: #363640;
+  color: white;
+}
+
+.button {
+  background-color: #363640; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #363640;
+}
+
+
+
+.imgIco {
+  cursor: pointer;
+  padding-top: 5px;
+  float: right;
+  padding-right: 10px;
+}
+
+

@@ -1,0 +1,131 @@
+.gallery {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: white;
+
+}
+
+.gallery-item {
+  height: 300px;
+  margin: 10px;
+  display: flex;
+  border: 1px dotted lightgray;
+}
+
+.single {
+  width: 200px;
+}
+
+.double {
+  width: 400px;
+}
+
+.scrollable {
+  width: 100%;
+  height: calc(100vh - 130px);
+  background-color: white;
+  overflow-y: auto;
+}
+
+.page {
+  background-color: #e6ecdd;
+  width: 200px;
+  height: 300px;
+}
+.page-right {
+  justify-content: flex-end;
+}
+
+.border-right {
+  border-right: 2px solid black;
+}
+
+.pt-single-small {
+  width: 90%;
+  height: 40%;
+  background-color: #9cc4f7;
+  border: 1px solid black;
+  position: relative;
+  left: 10px;
+  top: 140px;
+  overflow:auto;
+}
+.pt-single-big {
+  width: 90%;
+  height: 70%;
+  background-color: #9cc4f7;
+  border: 1px solid black;
+  position: relative;
+  left: 10px;
+  top: 20px;
+  overflow:auto;
+}
+.pt-triple {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tri1 {
+  width: 60px;
+  height: 80px;
+  background-color: #9cc4f7;
+  border: 1px solid black;
+  position: relative;
+  left: 10px;
+  top: 0px;
+  overflow:auto;
+}
+
+.tri2 {
+  width: 100px;
+  height: 80px;
+  background-color: #9cc4f7;
+  border: 1px solid black;
+  position: relative;
+  left: 20px;
+  top: 0px;
+  overflow:auto;
+}
+
+.tri3 {
+  width: 170px;
+  height: 160px;
+  background-color: #9cc4f7;
+  border: 1px solid black;
+  position: relative;
+  left: 10px;
+  top: -20px;
+  overflow:auto;
+}
+
+.droppedData {
+  font-size: 10px;
+}
+
+.image-left {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+.image-right {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  left: 180px;
+}
+
+.documentlabel {
+  height: 30px;
+  width: 100%;
+  background-color: red;
+}
+
+.active {
+  order: -1;
+  flex: 1 0 100%;
+}

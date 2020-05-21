@@ -1,0 +1,35 @@
+<div class="scrollable">
+
+
+
+  <div class="gallery" >
+
+
+
+        <div class="gallery-item double" *ngFor="let item of data; index as i"
+             [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" >
+              <div class="page" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
+
+                <img *ngIf="page.orientation==0 || (isFirst && item.pages.length>1)" src="/assets/img/leftpage.png" class="image-left"/>
+                <img *ngIf="page.orientation==1 || (isLast && item.pages.length>1)" src="/assets/img/rightpage.png" class="image-right"/>
+
+                    <div *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+                    <div *ngIf="page.pageTemplate==1" class="pt-single-big" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+                    <div *ngIf="page.pageTemplate==2" class="pt-triple">
+                      <div class="tri1"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+                      <div class="tri2"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+                      <div class="tri3"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+                    </div>
+
+
+              </div>
+        </div>
+
+
+
+  </div>
+
+
+
+
+</div>
