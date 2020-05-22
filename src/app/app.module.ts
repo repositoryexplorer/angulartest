@@ -30,6 +30,8 @@ import {CookieService} from 'ngx-cookie-service';
 import { Lazyspreadsscope2Component } from './shared/components/lazyspreadsscope2/lazyspreadsscope2.component';
 import { Flatplan2Component } from './pages/flatplan2/flatplan2.component';
 import { PrintpreviewComponent } from './pages/flatplan2/printpreview/printpreview.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, GallerytestComponent, Gallery2Component, FlatplanComponent, FlatplantoolbarComponent,
@@ -48,7 +50,7 @@ import { PrintpreviewComponent } from './pages/flatplan2/printpreview/printprevi
     DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
     DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
     ScrollingModule, DragDropModule,
-    BrowserAnimationsModule, DxTreeListModule
+    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule
   ],
   providers: [AuthService, ScreenService, AppInfoService, TreeTestService, ShowcontentService, CookieService],
   bootstrap: [AppComponent],

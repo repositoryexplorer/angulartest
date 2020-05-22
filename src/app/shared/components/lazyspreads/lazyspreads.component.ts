@@ -2,6 +2,7 @@ import {Component, ElementRef} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHandler, HttpParams} from '@angular/common/http';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {CookieService} from 'ngx-cookie-service';
+import {PaginationControlsDirective} from "ngx-pagination";
 
 export class Page {
   id: number;
@@ -20,6 +21,8 @@ export class Spread {
 })
 export class LazyspreadsComponent {
   data: Spread[];
+  itemsPerPage: number = 5;
+  p2: any;
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
     this.httpClient
       //?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
@@ -48,6 +51,19 @@ export class LazyspreadsComponent {
 
   allowDrop(event: DragEvent) {
     event.preventDefault();
+  }
+
+  currentPage: number;
+  onKeyUp(value: number) {
+    this.currentPage = value;
+  }
+  changePage(p: PaginationControlsDirective) {
+    p.setCurrent(this.currentPage);
+  }
+
+
+  Number(value: string) {
+    return Number(value);
   }
 
 }
