@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule } from 'devextreme-angular';
 import notify from 'devextreme/ui/notify';
-import {Gallery2ServiceService, House} from '../../../shared/services/gallery2-service.service';
+import {Gallery2ServiceService, House2} from '../../../shared/services/gallery2-service.service';
 
 
 if(!/localhost/.test(document.location.host)) {
@@ -18,8 +18,8 @@ if(!/localhost/.test(document.location.host)) {
   providers: [Gallery2ServiceService]
 })
 export class PrintpreviewComponent {
-  houses: House[];
-  currentHouse: House;
+  houses: House2[];
+  currentHouse: House2;
   popupVisible = false;
   ADD_TO_FAVORITES = "Add to Favorites";
   REMOVE_FROM_FAVORITES = "Remove from Favorites";
@@ -29,7 +29,7 @@ export class PrintpreviewComponent {
     this.currentHouse = this.houses[0];
   }
 
-  showHouse(house: House) {
+  showHouse(house: House2) {
     this.currentHouse = house;
     this.popupVisible = true;
   }

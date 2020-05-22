@@ -5,11 +5,11 @@
       <div class="item-options">
         <div>
           <div class="address">{{house.Address}}</div>
-          <div class="price large-text">{{house.Price | currency:'USD':'symbol':'1.0-0'}}</div>
+          <div class="price large-text">{{house.Price}}</div>
           <div class="agent">
             <div id="house{{house.ID}}">
               <img src="images/icon-agent.svg">
-              Listing agent
+              Proof reader
             </div>
           </div>
         </div>
@@ -49,8 +49,8 @@
     [(visible)]="popupVisible">
     <div *dxTemplate="let data of 'content'">
       <div class='popup-property-details'>
-        <div class='large-text'>{{currentHouse.Price | currency:'USD':'symbol':'1.0-0'}}</div>
-        <div class='opacity'>{{currentHouse.Address}}, {{currentHouse.City}}, {{currentHouse.State}}</div>
+        <div class='large-text'>{{currentHouse.Price}}</div>
+        <div class='opacity'>{{currentHouse.Address}}</div>
         <dx-button
           class="favorites"
           [text]="currentHouse.Favorite ? REMOVE_FROM_FAVORITES : ADD_TO_FAVORITES"
@@ -61,7 +61,7 @@
         </dx-button>
         <div class='images'>
           <img src="{{currentHouse.Image}}"/>
-          <img src="{{currentHouse.Image.replace('.jpg', 'b.jpg')}}" />
+          <img src="{{currentHouse.Image2}}" />
         </div>
         <div>{{currentHouse.Features}}</div>
       </div>
