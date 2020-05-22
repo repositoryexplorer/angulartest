@@ -71,6 +71,7 @@ export class SideNavInnerToolbarComponent implements OnInit {
     const path = event.itemData.path;
     const pointerEvent = event.event;
 
+
     if (path && this.menuOpened) {
       if (event.node.selected) {
         pointerEvent.preventDefault();
