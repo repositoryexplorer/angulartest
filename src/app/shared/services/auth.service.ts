@@ -5,7 +5,7 @@ import { Subject }    from 'rxjs';
 @Injectable()
 export class AuthService {
   private loggedSubject = new Subject<boolean>();
-
+  private currentRoute = new Subject<string>();
   loggedIn = false;
 
   constructor(private router: Router) {}
@@ -32,6 +32,10 @@ export class AuthService {
 
   getLoggedSubject() {
     return this.loggedSubject;
+  }
+
+  getCurrentRoute() {
+    return this.currentRoute;
   }
 }
 

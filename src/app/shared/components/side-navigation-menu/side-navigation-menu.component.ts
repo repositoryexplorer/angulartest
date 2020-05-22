@@ -3,6 +3,7 @@ import { DxTreeViewModule, DxTreeViewComponent } from 'devextreme-angular/ui/tre
 import { navigation } from '../../../app-navigation';
 
 import * as events from 'devextreme/events';
+import {AuthService} from '../../services';
 
 @Component({
   selector: 'app-side-navigation-menu',
@@ -58,10 +59,11 @@ export class SideNavigationMenuComponent implements AfterViewInit, OnDestroy {
     }
   }
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef, private authService: AuthService) { }
 
   onItemClick(event) {
     this.selectedItemChanged.emit(event);
+    this.authService.getCurrentRoute().next(event.itemData.text);
   }
 
   ngAfterViewInit() {

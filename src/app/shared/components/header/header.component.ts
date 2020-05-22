@@ -22,7 +22,7 @@ export class HeaderComponent {
   @Input()
   title: string;
 
-  public testlink: string = "Home -> Publications";
+  public currentRoute: string = "Home";
 
   userMenuItems = [{
     text: 'Profile',
@@ -39,11 +39,18 @@ export class HeaderComponent {
   }];
 
   constructor(private authService: AuthService, private router: Router) {
+    authService.getCurrentRoute().subscribe(route => {
+        if (route !== 'Prototype') {
+          this.currentRoute = route === "Home" ? route : ("Prototype -> " + route);
+        }
+      }
+      );
   }
 
   toggleMenu = () => {
     this.menuToggle.emit();
   }
+
 }
 
 @NgModule({
