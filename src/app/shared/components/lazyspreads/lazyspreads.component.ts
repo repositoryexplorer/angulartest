@@ -66,4 +66,14 @@ export class LazyspreadsComponent {
     return Number(value);
   }
 
+  goToFirstPage(p: PaginationControlsDirective) {
+    p.getTotalItems()/this.itemsPerPage
+    if (p.getCurrent()*this.itemsPerPage>p.getTotalItems()){
+      p.setCurrent(Math.floor(p.getTotalItems()/this.itemsPerPage));
+    } else {
+    p.getTotalItems()/p.getLastPage()*(p.getCurrent()-1)/this.itemsPerPage
+      p.setCurrent(Math.floor(p.getTotalItems()/p.getLastPage()*(p.getCurrent()-1)/this.itemsPerPage));
+    }
+
+  }
 }
