@@ -2,6 +2,7 @@
 <dx-data-grid
   #templatesGrid
   class="dx-card wide-card"
+  keyExpr="id"
   [dataSource]="dataSource"
   [showBorders]="false"
   [focusedRowEnabled]="true"
@@ -16,6 +17,7 @@
   [height]="100 + '%'"
   [allowColumnReordering]="true"
 >
+
   <dxo-row-dragging
     [allowReordering]="true"
     [onReorder]="onReorder"

@@ -13,7 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {TreeTestService} from './shared/services/treetest.service';
 import { GallerytestComponent } from './pages/gallerytest/gallerytest.component';
 import {
-  DxDataGridModule,
+  DxDataGridModule, DxLoadPanelModule,
   DxScrollViewModule,
   DxTileViewModule,
   DxToolbarModule,
@@ -57,7 +57,7 @@ import {FormsModule} from "@angular/forms";
     DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
     DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
     ScrollingModule, DragDropModule,
-    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule
+    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule
   ],
   providers: [AuthService, ScreenService, AppInfoService, TreeTestService, ShowcontentService, CookieService],
   bootstrap: [AppComponent],

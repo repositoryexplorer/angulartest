@@ -8,11 +8,22 @@ import {ShowcontentService} from '../../shared/services/showcontent.service';
 })
 export class FlatplanComponent {
   contentVisible: boolean = false;
+  isVisible: boolean = true;
 
   constructor(private service: ShowcontentService) {
     service.getSubject().subscribe(
       anyVar => {
         this.contentVisible = !this.contentVisible;
       });
+  }
+
+  onShown(e: any) {
+    setTimeout(() => {
+      this.isVisible = false;
+    }, 300);
+  }
+
+  onHidden(e: any) {
+
   }
 }

@@ -10,6 +10,7 @@ export class Flatplan2Component {
   contentVisible: boolean = false;
   basic: boolean = true;
   print: boolean = false;
+  isVisible: boolean = true;
 
   constructor(private service: ShowcontentService) {
     service.getSubject().subscribe(
@@ -28,5 +29,17 @@ export class Flatplan2Component {
         }
       });
   }
+
+  onShown(e: any) {
+    setTimeout(() => {
+      this.isVisible = false;
+    }, 1500);
+  }
+
+  onHidden(e: any) {
+
+  }
+
+
 }
 
