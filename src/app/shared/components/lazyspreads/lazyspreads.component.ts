@@ -10,6 +10,7 @@ export class Page {
   orientation: number;
 }
 export class Spread {
+  id: number;
   docId: string;
   spreadId: string;
   pages: Array<Page>;

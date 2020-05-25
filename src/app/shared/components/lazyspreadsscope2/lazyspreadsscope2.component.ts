@@ -3,6 +3,7 @@ import {HttpClient, HttpClientModule, HttpHandler, HttpParams} from '@angular/co
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {CookieService} from 'ngx-cookie-service';
 import {Spread} from '../lazyspreads/lazyspreads.component';
+import {PaginationControlsDirective} from "ngx-pagination";
 
 @Component({
   selector: 'app-lazyspreadsscope2',
@@ -12,6 +13,8 @@ import {Spread} from '../lazyspreads/lazyspreads.component';
 export class Lazyspreadsscope2Component {
   data: Array<Spread>;
   isDragOfDiv: boolean = false;
+  itemsPerPage: number = 5;
+  p2: any;
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
     this.httpClient
       //?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
@@ -46,7 +49,7 @@ export class Lazyspreadsscope2Component {
 
   onDragStart($event: DragEvent, index: number) {
     this.cookieService.set("divDrag", "drag");
-    this.cookieService.set("divDragIndex", index);
+    this.cookieService.set("divDragIndex", index.toString(10));
     this.isDragOfDiv = true;
   }
 
@@ -59,7 +62,7 @@ export class Lazyspreadsscope2Component {
   allowDrop2(event: DragEvent) {
     if (this.cookieService.get("divDrag") !== "") {
       var trg: any = event.currentTarget;
-      trg.style.border = 'solid 1px green'
+      trg.style.border = 'solid 1px green';
       trg.style.opacity = "0.2";
       event.preventDefault();
     }
@@ -79,7 +82,7 @@ export class Lazyspreadsscope2Component {
     if (this.cookieService.get("divDrag") !== "") {
       event.preventDefault();
 
-      var srcIndex: number = this.cookieService.get("divDragIndex");
+      var srcIndex: string = this.cookieService.get("divDragIndex");
       var trg: any = this.data[srcIndex];
 
       ///trg.innerHTML="<p>SRC</p>";
@@ -105,5 +108,19 @@ export class Lazyspreadsscope2Component {
     trg.style.border = '1px dotted lightgray';
     trg.style.opacity = "1.0";
   }
+
+  currentPage: number;
+  onKeyUp(value: number) {
+    this.currentPage = value;
+  }
+
+  Number(value: string) {
+    return Number(value);
+  }
+
+  changePage(p: PaginationControlsDirective) {
+    p.setCurrent(this.currentPage);
+  }
+
 }
 
