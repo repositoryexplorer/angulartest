@@ -3,7 +3,8 @@ import {HttpClient, HttpClientModule, HttpHandler, HttpParams} from '@angular/co
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {CookieService} from 'ngx-cookie-service';
 import {Spread} from '../lazyspreads/lazyspreads.component';
-import {PaginationControlsDirective} from "ngx-pagination";
+import {PaginationControlsDirective} from 'ngx-pagination';
+import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
 
 @Component({
   selector: 'app-lazyspreadsscope2',
@@ -11,23 +12,25 @@ import {PaginationControlsDirective} from "ngx-pagination";
   styleUrls: ['./lazyspreadsscope2.component.scss']
 })
 export class Lazyspreadsscope2Component {
-  data: Array<Spread>;
-  isDragOfDiv: boolean = false;
-  itemsPerPage: number = 5;
-  p2: any;
   constructor(private httpClient: HttpClient, private cookieService: CookieService) {
     this.httpClient
-      //?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
+      // ?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
       .get('http://localhost:3001/spreads')
       .toPromise()
       .then((data: any) => {
         this.data = data;
       })
       .catch((error) => {
-        throw 'Data Loading Error';
+        throw new Error('Data Loading Error');
       });
 
   }
+  data: Array<Spread>;
+  isDragOfDiv = false;
+  itemsPerPage = 5;
+  p2: any;
+
+  currentPage = 1;
 
   drop2(event: CdkDragDrop<Spread>) {
     moveItemInArray(this.data, event.previousIndex, event.currentIndex);
@@ -35,41 +38,41 @@ export class Lazyspreadsscope2Component {
 
   onItemDrop(event: DragEvent) {
     event.preventDefault();
-    var ble: string = this.cookieService.get("droppedData");
-    var curTrg: any = event.currentTarget;
+    let ble: string = this.cookieService.get('droppedData');
+    let curTrg: any = event.currentTarget;
     curTrg.backgroundColor = 'yellow';
-    curTrg.innerHTML = curTrg.innerHTML + "<p class='listItem'>" + this.cookieService.get("droppedData") + "</p>";
+    curTrg.innerHTML = curTrg.innerHTML + '<p class=\'listItem\'>' + this.cookieService.get('droppedData') + '</p>';
   }
 
   allowDrop(event: DragEvent) {
-    if (this.cookieService.get("droppedData") !== "") {
+    if (this.cookieService.get('droppedData') !== '') {
       event.preventDefault();
     }
   }
 
   onDragStart($event: DragEvent, index: number) {
-    this.cookieService.set("divDrag", "drag");
-    this.cookieService.set("divDragIndex", index.toString(10));
+    this.cookieService.set('divDrag', 'drag');
+    this.cookieService.set('divDragIndex', index.toString(10));
     this.isDragOfDiv = true;
   }
 
   onDragEnd(event: DragEvent) {
-    this.cookieService.delete("divDrag");
+    this.cookieService.delete('divDrag');
     this.isDragOfDiv = false;
     this.removeDropCss(event);
   }
-//=======================================================
+// =======================================================
   allowDrop2(event: DragEvent) {
-    if (this.cookieService.get("divDrag") !== "") {
-      var trg: any = event.currentTarget;
+    if (this.cookieService.get('divDrag') !== '') {
+      let trg: any = event.currentTarget;
       trg.style.border = 'solid 1px green';
-      trg.style.opacity = "0.2";
+      trg.style.opacity = '0.2';
       event.preventDefault();
     }
   }
   array_move(arr, old_index, new_index) {
     if (new_index >= arr.length) {
-      var k = new_index - arr.length + 1;
+      let k = new_index - arr.length + 1;
       while (k--) {
         arr.push(undefined);
       }
@@ -79,21 +82,23 @@ export class Lazyspreadsscope2Component {
   }
 
   onDrop(event: DragEvent, index: number) {
-    if (this.cookieService.get("divDrag") !== "") {
+    if (this.cookieService.get('divDrag') !== '') {
       event.preventDefault();
 
-      var srcIndex: string = this.cookieService.get("divDragIndex");
-      var trg: any = this.data[srcIndex];
+      let tempIndex : number = (this.currentPage - 1) * this.itemsPerPage;
+      let srcIndex: number = Number(this.cookieService.get('divDragIndex')) + tempIndex;
+      let trg: any = this.data[srcIndex];
 
-      ///trg.innerHTML="<p>SRC</p>";
+      /// trg.innerHTML="<p>SRC</p>";
 
-      var curTrg: any = event.currentTarget;
+      let curTrg: any = event.currentTarget;
 
      // this.data.splice(srcIndex, 1);
 
-      //this.data.splice(index, 1, trg);
+      // this.data.splice(index, 1, trg);
 
-      this.array_move(this.data, srcIndex, index);
+      const trgIndex: number = (index + ((this.currentPage - 1) * this.itemsPerPage));
+      this.array_move(this.data, srcIndex, trgIndex);
 
       this.removeDropCss(event);
     }
@@ -104,12 +109,10 @@ export class Lazyspreadsscope2Component {
   }
 
   private removeDropCss(event: DragEvent) {
-    var trg: any = event.currentTarget;
+    let trg: any = event.currentTarget;
     trg.style.border = '1px dotted lightgray';
-    trg.style.opacity = "1.0";
+    trg.style.opacity = '1.0';
   }
-
-  currentPage: number;
   onKeyUp(value: number) {
     this.currentPage = value;
   }
@@ -120,6 +123,36 @@ export class Lazyspreadsscope2Component {
 
   changePage(p: PaginationControlsDirective) {
     p.setCurrent(this.currentPage);
+    alert(this.currentPage);
+  }
+
+  previousClick(p: PaginationControlsDirective) {
+    p.previous();
+    this.currentPage = p.getCurrent() - 1;
+    alert(this.currentPage);
+  }
+
+  nextClick(p: PaginationControlsDirective) {
+    p.next();
+    this.currentPage = p.getCurrent() + 1;
+    alert(this.currentPage);
+  }
+
+  onPage(p: PaginationControlsDirective, page: Page) {
+    p.setCurrent(page.value);
+    this.currentPage = page.value;
+    alert(this.currentPage);
+  }
+
+  goToFirstPage(p: PaginationControlsDirective) {
+
+    if (p.getCurrent() * this.itemsPerPage > p.getTotalItems()){
+      p.setCurrent(Math.floor(p.getTotalItems() / this.itemsPerPage));
+    } else {
+
+      p.setCurrent(Math.floor(p.getTotalItems() / p.getLastPage() * ( p.getCurrent() - 1 ) / this.itemsPerPage));
+    }
+
   }
 
 }
