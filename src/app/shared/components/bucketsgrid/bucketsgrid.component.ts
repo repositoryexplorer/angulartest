@@ -63,4 +63,8 @@ export class BucketsgridComponent {
 
    this.cookieService.set("droppedData", data.id + "|" + data.text);
   }
+
+  onDragEnd(event: DragEvent) {
+    this.cookieService.delete("droppedData");
+  }
 }

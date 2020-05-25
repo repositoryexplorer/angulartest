@@ -33,8 +33,17 @@
 .page {
   background-color: #e6ecdd;
   width: 200px;
-  height: 300px;
 }
+
+.height298 {
+  height: 298px;
+}
+
+.height296 {
+  height: 296px;
+}
+
+
 .page-right {
   justify-content: flex-end;
 }
@@ -128,4 +137,16 @@
 .active {
   order: -1;
   flex: 1 0 100%;
+}
+
+.scrollIndicator {
+   width: 5px;
+   background-color: green;
+   height: 300px;
+   position: absolute;
+   left: 600px;
+}
+
+#dragoverattr {
+  border: solid 2px red;
 }

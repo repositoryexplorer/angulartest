@@ -21,7 +21,7 @@
   <dxi-column cellTemplate="employeeTemplate"></dxi-column>
 
   <div *dxTemplate="let options of 'employeeTemplate'">
-    <img width="32" height="32" draggable="true" src="/assets/img/drag.svg" (drag)="onDragStart($event, options.data)"/>
+    <img width="32" height="32" draggable="true" src="/assets/img/drag.svg" (drag)="onDragStart($event, options.data)" (dragend)="onDragEnd($event)"/>
   </div>
 
 <!--  <dxi-column dataField="Full_Name"></dxi-column>-->

@@ -1,14 +1,13 @@
 <div class="scrollable">
 
-
-
   <div class="gallery" >
 
 
 
-    <div class="gallery-item double" *ngFor="let item of data; index as i"
-         [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" >
-      <div class="page" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
+    <div draggable="true"  class="gallery-item double" *ngFor="let item of data; index as i"
+         [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd($event)"
+         (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)">
+      <div class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
 
         <img *ngIf="page.orientation==0 || (isFirst && item.pages.length>1)" src="/assets/img/leftpage.png" class="image-left"/>
         <img *ngIf="page.orientation==1 || (isLast && item.pages.length>1)" src="/assets/img/rightpage.png" class="image-right"/>
