@@ -41,7 +41,15 @@ export class Lazyspreadsscope2Component {
     let ble: string = this.cookieService.get('droppedData');
     let curTrg: any = event.currentTarget;
     curTrg.backgroundColor = 'yellow';
-    curTrg.innerHTML = curTrg.innerHTML + '<p class=\'listItem\'>' + this.cookieService.get('droppedData') + '</p>';
+
+    const id = ble.substring(0, ble.indexOf('|'));
+    const label = ble.substring(ble.indexOf('|') + 1);
+
+    curTrg.innerHTML = curTrg.innerHTML + '<div id=' + id + ' style=\'  border: 1px solid lightgray;\n' +
+      '  widht:100%;\n' +
+      '  height: 22px;\n' +
+      '  text-align: center;\n' +
+      '  background-color: white;\'>' + label + '</div>';
   }
 
   allowDrop(event: DragEvent) {
@@ -123,25 +131,21 @@ export class Lazyspreadsscope2Component {
 
   changePage(p: PaginationControlsDirective) {
     p.setCurrent(this.currentPage);
-    alert(this.currentPage);
   }
 
   previousClick(p: PaginationControlsDirective) {
     p.previous();
     this.currentPage = p.getCurrent() - 1;
-    alert(this.currentPage);
   }
 
   nextClick(p: PaginationControlsDirective) {
     p.next();
     this.currentPage = p.getCurrent() + 1;
-    alert(this.currentPage);
   }
 
   onPage(p: PaginationControlsDirective, page: Page) {
     p.setCurrent(page.value);
     this.currentPage = page.value;
-    alert(this.currentPage);
   }
 
   goToFirstPage(p: PaginationControlsDirective) {

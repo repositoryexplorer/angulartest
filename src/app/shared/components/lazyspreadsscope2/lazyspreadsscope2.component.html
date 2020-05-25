@@ -1,24 +1,25 @@
 <div class="scrollable">
 
-  <div class="gallery" >
+  <div id="spreadGallery" class="gallery" >
 
 
 
-    <div draggable="true"  class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
+    <div draggable="true"  id = {{item.id}} class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
          [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd($event)"
          (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)">
 
-      <div class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
+      <div id = {{page.id}} class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
 
-        <img *ngIf="page.orientation==0 || (isFirst && item.pages.length>1)" src="/assets/img/leftpage.png" class="image-left"/>
-        <img *ngIf="page.orientation==1 || (isLast && item.pages.length>1)" src="/assets/img/rightpage.png" class="image-right"/>
 
-        <div *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
-        <div *ngIf="page.pageTemplate==1" class="pt-single-big" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
-        <div *ngIf="page.pageTemplate==2" class="pt-triple">
-          <div class="tri1"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
-          <div class="tri2"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
-          <div class="tri3"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+        <img id="leftPage" *ngIf="page.orientation==0 || (isFirst && item.pages.length>1)" src="/assets/img/leftpage.png" class="image-left"/>
+        <img id="righPage" *ngIf="page.orientation==1 || (isLast && item.pages.length>1)" src="/assets/img/rightpage.png" class="image-right"/>
+
+        <div id="0" *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+        <div id="1" *ngIf="page.pageTemplate==1" class="pt-single-big" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+        <div id="2" *ngIf="page.pageTemplate==2" class="pt-triple">
+          <div id = "onDropTre1" class="tri1"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+          <div id = "onDropTre2" class="tri2"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+          <div id = "onDropTre3" class="tri3"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
         </div>
 
 
@@ -34,14 +35,14 @@
 
 </div>
 
-
-<pagination-template #p="paginationApi"
+<div id="spreadsPaginator">
+<pagination-template  #p="paginationApi"
 
                      (pageChange)="p2 = $event">
 
 
   <div class="ngx-pagination">
-    <div class="ngx-pagination" [class.disabled]="p.isFirstPage()">
+    <div id = "previous" class="ngx-pagination" [class.disabled]="p.isFirstPage()">
       <a (click)="previousClick(p)"> << </a>
 
     </div>
@@ -49,7 +50,7 @@
 
 
 
-    <div *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
+    <div id={{page.value}} *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
       <a (click)="onPage(p, page)" *ngIf="p.getCurrent() !== page.value">
         {{ page.label }}
       </a>
@@ -58,16 +59,16 @@
       </div>
     </div>
 
-    <div class="ngx-pagination" [class.disabled]="p.isLastPage()">
+    <div id="next" class="ngx-pagination" [class.disabled]="p.isLastPage()">
       <a *ngIf="!p.isLastPage()" (click)="nextClick(p)"> >> </a>
     </div>
 
 
-    <div>go to page: <input style = "width: 30px" (keyup)="onKeyUp(Number(titleInput.value))"  #titleInput/>
+    <div id="changePage">go to page: <input style = "width: 30px" (keyup)="onKeyUp(Number(titleInput.value))"  #titleInput/>
       <button (click)="changePage(p)">GO!</button>
     </div>
     <label style="margin-left: 10px">Items per page:
-      <select [(ngModel)]="itemsPerPage" (ngModelChange)="goToFirstPage(p)">
+      <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (ngModelChange)="goToFirstPage(p)">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -76,3 +77,6 @@
     </label>
   </div>
 </pagination-template>
+</div>
+
+

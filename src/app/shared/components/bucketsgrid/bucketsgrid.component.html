@@ -1,5 +1,5 @@
 <dx-tree-list
-  id="employees"
+  id="buckets"
   [dataSource]="bucketsFlatList"
   rootValue="-1"
   keyExpr="id"
@@ -22,7 +22,7 @@
   <dxi-column dataField="text" caption="Label"></dxi-column>
   <dxi-column cellTemplate="employeeTemplate"></dxi-column>
 
-  <div *dxTemplate="let options of 'employeeTemplate'">
+  <div id="dragOutsideBuckets" *dxTemplate="let options of 'employeeTemplate'">
     <img width="32" height="32" draggable="true" src="/assets/img/drag.svg" (drag)="onDragStart($event, options.data)" (dragend)="onDragEnd($event)"/>
   </div>
 
