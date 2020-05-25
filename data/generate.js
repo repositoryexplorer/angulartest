@@ -25,10 +25,13 @@ function createPages() {
   }
   return pages;
 }
-for (var doc=1; doc<=20; doc++) {
 
- for (var i = 1; i <= 50; i++) {
+var identifier = 0;
+for (var doc=1; doc<=200; doc++) {
+
+ for (var i = 1; i <= 200; i++) {
     database.spreads.push({
+      id: identifier,
       docId: doc,
       spreadId: i,
 
@@ -36,6 +39,7 @@ for (var doc=1; doc<=20; doc++) {
       pages: createPages(),
 
     });
+    identifier++;
   }
 
 }
