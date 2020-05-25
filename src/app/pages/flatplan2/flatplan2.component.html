@@ -1,6 +1,18 @@
-<div class="main">
+<div class="main" #flatplan2>
   <app-flatplantoolbar class="flatToolbar"></app-flatplantoolbar>
   <div class="layout">
+    <dx-load-panel
+      [position]="{ of: '#flatplan2' }"
+      [closeOnOutsideClick] = "true"
+      [(visible)] = "isVisible"
+      [showIndicator]="true"
+      [showPane]="true"
+      [shading]="true"
+      [closeOnOutsideClick]="false"
+      (onShown)="onShown($event)"
+      (onHidden)="onHidden($event)"
+      shadingColor="rgba(0,0,0,0.4)">
+    </dx-load-panel>
 
     <div class="publications">
       <div>

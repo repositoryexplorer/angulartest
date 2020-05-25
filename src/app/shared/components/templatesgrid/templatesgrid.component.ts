@@ -19,7 +19,7 @@ export class Template {
 })
 export class TemplatesgridComponent {
   dataSource: Array<Template> = [{"id":1, "name":"retail_ProductText"},{"id":2, "name":"retail_Image+Price"},{"id":3, "name":"retail_Detail Image"},
-                                {"id":4, "name":"retail_Image+Detail+Price"}, {"id":5, "name":"tsg_Icon"}, {"id":5, "name":"tsg_Angebot"}];
+                                {"id":4, "name":"retail_Image+Detail+Price"}, {"id":5, "name":"tsg_Icon"}, {"id":6, "name":"tsg_Angebot"}];
   templates: Template[] = [{"id":1, "name":"Test1"},{"id":2, "name":"Test2"}];
   @ViewChild(DxDataGridComponent) dg: DxDataGridComponent;
 
