@@ -11,19 +11,10 @@
 
 
 
-  <dxo-row-dragging
-    [onDragChange]="onDragChange"
-    [onReorder]="onReorder"
-    [allowDropInsideItem]="allowDropInsideItem"
-    [allowReordering]="allowReordering"
-    [showDragIcons]="showDragIcons"
-    group="draggingGroupName"
-  ></dxo-row-dragging>
-  <dxi-column dataField="text" caption="Label"></dxi-column>
-  <dxi-column cellTemplate="employeeTemplate"></dxi-column>
+  <dxi-column dataField="text" caption="Label" cellTemplate="labelTemplate"></dxi-column>
 
-  <div id="dragOutsideBuckets" *dxTemplate="let options of 'employeeTemplate'">
-    <img width="32" height="32" draggable="true" src="/assets/img/drag.svg" (drag)="onDragStart($event, options.data)" (dragend)="onDragEnd($event)"/>
+  <div id="labelTemplate" draggable="true" (drag)="onDragStart($event, options.text)" (dragend)="onDragEnd($event)" *dxTemplate="let options of 'labelTemplate'">
+    {{options.text}}
   </div>
 
 <!--  <dxi-column dataField="Full_Name"></dxi-column>-->

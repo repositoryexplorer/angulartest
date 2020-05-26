@@ -61,7 +61,7 @@ export class BucketsgridComponent {
     // Set the drag's format and data. Use the event target's id for the data
     //ev.dataTransfer.setData("text/plain", ev.target.id);
 
-   this.cookieService.set("droppedData", data.id + "|" + data.text);
+   this.cookieService.set("droppedData", data.id + "|" + data);
   }
 
   onDragEnd(event: DragEvent) {
