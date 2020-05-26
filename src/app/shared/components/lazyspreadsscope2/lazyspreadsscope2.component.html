@@ -4,17 +4,26 @@
 
 
 
-    <div #spread draggable="true"  id = {{item.id}} class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
+    <div #spread draggable="true"  id ='spread{{item.id}}' class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
          [class.selection]= "item.isSelected" [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd($event)"
          (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)" (click)="onClick($event, item)">
 
-      <div id = {{page.id}} class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast"
+      <div id = 'page{{page.id}}' class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast"
            (dragover)="allowDropOnPage($event)"
            (drop)="onDropOnPage($event, item.id, page.id)">
 
 <div style="display: inline-flex">
         <img id="leftPage" [class.hide]="!(page.orientation==0 || (isFirst && item.pages.length>1))" src="/assets/img/leftpage.png" class="image-left" />
-      <div #templateLabel id="templateBox{{item.id}}_{{page.id}}" class="templateBox"></div>
+      <div #templateLabel id="templateBox{{item.id}}_{{page.id}}" class="templateBox">
+
+      </div>
+  <dx-context-menu
+    [dataSource]="items"
+    [width]="200"
+    target="#page{{page.id}}"
+    (onItemClick)="itemClick($event)">
+  </dx-context-menu>
+<!--  <div style="background-color: black; color: white; width: 12px" >X</div>-->
         <img id="righPage" [class.hide]="!(page.orientation==1 || (isLast && item.pages.length>1))" src="/assets/img/rightpage.png" class="image-right"/>
 </div>
         <div id="0" *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>

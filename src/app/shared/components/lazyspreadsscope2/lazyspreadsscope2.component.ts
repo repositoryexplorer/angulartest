@@ -6,6 +6,7 @@ import {Spread} from '../lazyspreads/lazyspreads.component';
 import {PaginationControlsDirective} from 'ngx-pagination';
 import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
 import { DOCUMENT } from '@angular/common';
+import notify from 'devextreme/ui/notify';
 
 @Component({
   selector: 'app-lazyspreadsscope2',
@@ -14,8 +15,23 @@ import { DOCUMENT } from '@angular/common';
 })
 export class Lazyspreadsscope2Component {
   private document: any;
+  items: any;
   constructor(private httpClient: HttpClient, private cookieService: CookieService, @Inject(DOCUMENT) document) {
     this.document = document;
+
+    this.items = [{
+      text: 'Share',
+      items: [
+        { text: 'Facebook' },
+        { text: 'Twitter' }]
+    },
+      { text: 'Download' },
+      { text: 'Comment' },
+      { text: 'Favorite' }
+    ];
+
+
+
 
     this.httpClient
       // ?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
@@ -29,6 +45,14 @@ export class Lazyspreadsscope2Component {
       });
 
   }
+
+
+  itemClick(e) {
+    if (!e.itemData.items) {
+      notify("The \"" + e.itemData.text + "\" item was clicked", "success", 1500);
+    }
+  }
+
   data: Array<Spread>;
   isDragOfDiv = false;
   itemsPerPage = 5;
@@ -118,7 +142,7 @@ export class Lazyspreadsscope2Component {
   onDropOnPage(event: any, index: number, index2: number) {
     console.log('inside dropsssss');
     if (this.cookieService.get('droppedTemplate') !== '') {
-      console.log('dropped template ' + this.cookieService.get('droppedTemplate'));
+
       let ala: string;
       ala = 'templateBox'+index + '_' + index2;
       const kabum : any = document.getElementById(ala);

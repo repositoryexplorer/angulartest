@@ -13,12 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import {TreeTestService} from './shared/services/treetest.service';
 import { GallerytestComponent } from './pages/gallerytest/gallerytest.component';
 import {
-  DxDataGridModule, DxLoadPanelModule,
-  DxScrollViewModule,
-  DxTileViewModule,
-  DxToolbarModule,
-  DxTreeListModule,
-  DxTreeViewModule
+    DxContextMenuModule,
+    DxDataGridModule, DxLoadPanelModule,
+    DxScrollViewModule,
+    DxTileViewModule,
+    DxToolbarModule,
+    DxTreeListModule,
+    DxTreeViewModule
 } from 'devextreme-angular';
 import { Gallery2Component } from './pages/gallery2/gallery2.component';
 import { DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule } from 'devextreme-angular';
@@ -44,21 +45,21 @@ import {FormsModule} from "@angular/forms";
   declarations: [AppComponent, GallerytestComponent, Gallery2Component, FlatplanComponent, FlatplantoolbarComponent,
     TemplatesgridComponent, BucketsgridComponent, SpreadsgalleryComponent, LazyspreadsComponent, Lazyspreadsscope2Component, Flatplan2Component, PrintpreviewComponent,
     ],
-  imports: [
-    BrowserModule,
-    SideNavOuterToolbarModule,
-    SideNavInnerToolbarModule,
-    SingleCardModule,
-    FooterModule,
-    LoginFormModule,
-    AppRoutingModule,
-    HttpClientModule,
-    DxTileViewModule,
-    DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
-    DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
-    ScrollingModule, DragDropModule,
-    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule
-  ],
+    imports: [
+        BrowserModule,
+        SideNavOuterToolbarModule,
+        SideNavInnerToolbarModule,
+        SingleCardModule,
+        FooterModule,
+        LoginFormModule,
+        AppRoutingModule,
+        HttpClientModule,
+        DxTileViewModule,
+        DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
+        DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
+        ScrollingModule, DragDropModule,
+        BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule, DxContextMenuModule
+    ],
   providers: [AuthService, ScreenService, AppInfoService, TreeTestService, ShowcontentService, CookieService],
   bootstrap: [AppComponent],
 })
