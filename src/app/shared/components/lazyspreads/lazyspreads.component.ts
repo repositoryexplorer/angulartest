@@ -14,6 +14,7 @@ export class Spread {
   docId: string;
   spreadId: string;
   pages: Array<Page>;
+  isSelected = false;
 }
 @Component({
   selector: 'app-lazyspreads',

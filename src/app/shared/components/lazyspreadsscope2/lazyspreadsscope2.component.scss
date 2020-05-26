@@ -195,3 +195,20 @@
   align-content: center;
   background-color: red;
 }
+
+.selection {
+  border: 1px solid red;
+}
+
+.onDragOver {
+  opacity: 0.2;
+  border: 1px dotted lightgreen;
+}
+
+.onItemDrop {
+  border: 1px solid lightgray;
+  widht:100%;
+  height: 22px;
+  text-align: center;
+  background-color: white;
+}

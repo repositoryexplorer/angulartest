@@ -73,8 +73,14 @@ export class Lazyspreadsscope2Component {
   allowDrop2(event: DragEvent) {
     if (this.cookieService.get('divDrag') !== '') {
       let trg: any = event.currentTarget;
-      trg.style.border = 'solid 1px green';
-      trg.style.opacity = '0.2';
+      //trg.addClass('onDragOver');
+      if (trg.className.indexOf('onDragOver') === -1){
+        trg.className += ' onDragOver';
+      }
+
+     // style.border = 'solid 1px green';
+      //trg.style.opacity = '0.2';
+
       event.preventDefault();
     }
   }
@@ -118,8 +124,10 @@ export class Lazyspreadsscope2Component {
 
   private removeDropCss(event: DragEvent) {
     let trg: any = event.currentTarget;
-    trg.style.border = '1px dotted lightgray';
-    trg.style.opacity = '1.0';
+    //trg.style.border = '1px dotted red';
+    //trg.style.opacity = '1.0';
+    trg.className = trg.className.replace('onDragOver', '');
+   // trg.removeClass('onDragOver');
   }
   onKeyUp(value: number) {
     this.currentPage = value;
@@ -159,5 +167,12 @@ export class Lazyspreadsscope2Component {
 
   }
 
+  onClick(spread: Spread) {
+    this.data.forEach(item => {
+        item.isSelected = false;
+    });
+    console.log(spread.id);
+    spread.isSelected = true;
+  }
 }
 

@@ -9,7 +9,7 @@ import {BrowserModule} from '@angular/platform-browser';
   styleUrls: ['./treetest.component.scss']
 })
 export class TreetestComponent implements OnInit {
-  products: Product[];
+  products: Array<Product>;
   currentItem: Product;
 
   constructor(service: TreeTestService) {
@@ -25,4 +25,15 @@ export class TreetestComponent implements OnInit {
   ngOnInit() {
 
   }
+
+  onReorder(e) {
+    var visibleRows = e.component.getVisibleRows(),
+      toIndex = this.products.indexOf(visibleRows[e.toIndex].data),
+      fromIndex = this.products.indexOf(e.itemData);
+
+    this.products.splice(fromIndex, 1);
+    this.products.splice(toIndex, 0, e.itemData);
+  }
+
+  //moveItemInArray(this.items, event.previousIndex, event.currentIndex);
 }

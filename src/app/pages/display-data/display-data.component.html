@@ -2,8 +2,9 @@
 
 <dx-data-grid
   #grid1
+  keyExpr = "id"
   class="dx-card wide-card"
-  [dataSource]="dataSource"
+  [dataSource]="products"
   [showBorders]="false"
   [focusedRowEnabled]="true"
   [focusedRowIndex]="0"
