@@ -4,6 +4,7 @@ import CustomStore from 'devextreme/data/custom_store';
 import { HttpClient, HttpClientModule, HttpParams } from '@angular/common/http';
 import { ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
+import {CookieService} from "ngx-cookie-service";
 
 
 
@@ -26,7 +27,7 @@ export class TemplatesgridComponent {
 
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient,  private cookieService: CookieService) {
 
     function isNotEmpty(value: any): boolean {
       return value !== undefined && value !== null && value !== '';
@@ -68,5 +69,14 @@ export class TemplatesgridComponent {
       },
 
     });
+  }
+
+  onDragStart(event: any, text: string) {
+    this.cookieService.set("droppedTemplate", text);
+  }
+
+  onDragEnd(event: any) {
+
+     this.cookieService.delete("droppedTemplate");
   }
 }

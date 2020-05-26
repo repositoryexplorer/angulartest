@@ -1,4 +1,4 @@
-<div class="scrollable" (click)="onGalleryClick()">
+<div class="scrollable" (click)="onGalleryClick()" >
 
   <div id="spreadGallery" class="gallery" >
 
@@ -10,10 +10,11 @@
 
       <div id = {{page.id}} class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
 
-
-        <img id="leftPage" *ngIf="page.orientation==0 || (isFirst && item.pages.length>1)" src="/assets/img/leftpage.png" class="image-left"/>
-        <img id="righPage" *ngIf="page.orientation==1 || (isLast && item.pages.length>1)" src="/assets/img/rightpage.png" class="image-right"/>
-
+<div style="display: inline-flex">
+        <img id="leftPage" [class.hide]="!(page.orientation==0 || (isFirst && item.pages.length>1))" src="/assets/img/leftpage.png" class="image-left" />
+      <div class="templateBox">ala</div>
+        <img id="righPage" [class.hide]="!(page.orientation==1 || (isLast && item.pages.length>1))" src="/assets/img/rightpage.png" class="image-right"/>
+</div>
         <div id="0" *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
         <div id="1" *ngIf="page.pageTemplate==1" class="pt-single-big" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
         <div id="2" *ngIf="page.pageTemplate==2" class="pt-triple">
