@@ -71,7 +71,9 @@ export class Lazyspreadsscope2Component {
   }
 // =======================================================
   allowDrop2(event: DragEvent) {
-    if (this.cookieService.get('divDrag') !== '') {
+
+
+    if (this.cookieService.get('divDrag') !== '' || this.cookieService.get('droppedTemplate') !== '') {
       let trg: any = event.currentTarget;
       //trg.addClass('onDragOver');
       if (trg.className.indexOf('onDragOver') === -1){
@@ -81,7 +83,9 @@ export class Lazyspreadsscope2Component {
      // style.border = 'solid 1px green';
       //trg.style.opacity = '0.2';
 
+
       event.preventDefault();
+
     }
   }
   array_move(arr, old_index, new_index) {
@@ -96,6 +100,12 @@ export class Lazyspreadsscope2Component {
   }
 
   onDrop(event: DragEvent, index: number) {
+    if (this.cookieService.get('droppedTemplate') !== ''){
+      event.preventDefault();
+
+
+    }
+
     if (this.cookieService.get('divDrag') !== '') {
       event.preventDefault();
 
