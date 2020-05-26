@@ -35,23 +35,23 @@
 
 </div>
 
-<div id="spreadsPaginator">
+<div id="spreadsPaginator" class="paginator">
 <pagination-template  #p="paginationApi"
 
                      (pageChange)="p2 = $event">
 
 
   <div class="ngx-pagination">
-    <div id = "previous" class="ngx-pagination" [class.disabled]="p.isFirstPage()">
-      <a (click)="previousClick(p)"> << </a>
+    <div id = "previous" class="ngx-pagination  marginTop" [class.disabled]="p.isFirstPage()">
+      <a (click)="previousClick(p)" class="naviItem"> << </a>
 
     </div>
 
 
 
 
-    <div id={{page.value}} *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value">
-      <a (click)="onPage(p, page)" *ngIf="p.getCurrent() !== page.value">
+    <div id={{page.value}} *ngFor="let page of p.pages" [class.current]="p.getCurrent() === page.value" class="marginTop">
+      <a (click)="onPage(p, page)" *ngIf="p.getCurrent() !== page.value" class="naviItem">
         {{ page.label }}
       </a>
       <div class="ngx-pagination" *ngIf="p.getCurrent() === page.value">
@@ -59,15 +59,16 @@
       </div>
     </div>
 
-    <div id="next" class="ngx-pagination" [class.disabled]="p.isLastPage()">
-      <a *ngIf="!p.isLastPage()" (click)="nextClick(p)"> >> </a>
+    <div id="next" class="ngx-pagination" [class.disabled]="p.isLastPage()" class="marginTop">
+      <a *ngIf="!p.isLastPage()" (click)="nextClick(p)" class="naviItem"> >> </a>
     </div>
 
 
-    <div id="changePage">go to page: <input style = "width: 30px" (keyup)="onKeyUp(Number(titleInput.value))"  #titleInput/>
-      <button (click)="changePage(p)">GO!</button>
+    <div id="changePage" >
+       Page: <input style = "width: 30px" (keyup)="onKeyUp(Number(titleInput.value))"  #titleInput class="pageNoInput"/>
+      <button (click)="changePage(p)" class="buttonGo">GO!</button>
     </div>
-    <label style="margin-left: 10px">Items per page:
+    <label style="margin-left: 10px" class="marginTop">Items per page:
       <select id="itemsPerPage" [(ngModel)]="itemsPerPage" (ngModelChange)="goToFirstPage(p)">
         <option value="5">5</option>
         <option value="10">10</option>
