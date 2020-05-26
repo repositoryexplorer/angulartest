@@ -133,10 +133,15 @@
 }
 
 .templateBox {
-background-color: red;
+background-color: whitesmoke;
+  border: 1px solid #71a436;
+  font-size: 10px;
+  text-align: center;
   width: 100px;
-position: relative;
+  position: relative;
   left: 28px;
+  opacity: 0.0;
+  overflow: hidden;
 }
 
 .documentlabel {

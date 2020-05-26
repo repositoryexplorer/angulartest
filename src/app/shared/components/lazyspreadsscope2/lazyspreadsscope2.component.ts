@@ -1,10 +1,11 @@
-import {Component, ElementRef} from '@angular/core';
+import {Component, ElementRef, Inject, ViewChild} from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHandler, HttpParams} from '@angular/common/http';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 import {CookieService} from 'ngx-cookie-service';
 import {Spread} from '../lazyspreads/lazyspreads.component';
 import {PaginationControlsDirective} from 'ngx-pagination';
 import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-lazyspreadsscope2',
@@ -12,7 +13,10 @@ import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
   styleUrls: ['./lazyspreadsscope2.component.scss']
 })
 export class Lazyspreadsscope2Component {
-  constructor(private httpClient: HttpClient, private cookieService: CookieService) {
+  private document: any;
+  constructor(private httpClient: HttpClient, private cookieService: CookieService, @Inject(DOCUMENT) document) {
+    this.document = document;
+
     this.httpClient
       // ?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
       .get('http://localhost:3001/spreads')
@@ -29,6 +33,8 @@ export class Lazyspreadsscope2Component {
   isDragOfDiv = false;
   itemsPerPage = 5;
   p2: any;
+  @ViewChild('templateLabel') templateLabel: ElementRef;
+  @ViewChild('spread') spread: ElementRef;
 
   currentPage = 1;
 
@@ -73,9 +79,9 @@ export class Lazyspreadsscope2Component {
   allowDrop2(event: DragEvent) {
 
 
-    if (this.cookieService.get('divDrag') !== '' || this.cookieService.get('droppedTemplate') !== '') {
+    if (this.cookieService.get('divDrag') !== '') {
       let trg: any = event.currentTarget;
-      //trg.addClass('onDragOver');
+
       if (trg.className.indexOf('onDragOver') === -1){
         trg.className += ' onDragOver';
       }
@@ -88,6 +94,16 @@ export class Lazyspreadsscope2Component {
 
     }
   }
+
+  allowDropOnPage(event: DragEvent) {
+
+
+    if (this.cookieService.get('droppedTemplate') !== '') {
+      event.preventDefault();
+
+    }
+  }
+
   array_move(arr, old_index, new_index) {
     if (new_index >= arr.length) {
       let k = new_index - arr.length + 1;
@@ -99,12 +115,25 @@ export class Lazyspreadsscope2Component {
     return arr; // for testing
   }
 
-  onDrop(event: DragEvent, index: number) {
-    if (this.cookieService.get('droppedTemplate') !== ''){
+  onDropOnPage(event: any, index: number, index2: number) {
+    console.log('inside dropsssss');
+    if (this.cookieService.get('droppedTemplate') !== '') {
+      console.log('dropped template ' + this.cookieService.get('droppedTemplate'));
+      let ala: string;
+      ala = 'templateBox'+index + '_' + index2;
+      const kabum : any = document.getElementById(ala);
+      kabum.style = 'opacity: 1.0';
+      kabum.title = this.cookieService.get('droppedTemplate');
+      kabum.innerHTML = this.cookieService.get('droppedTemplate');
+
+
       event.preventDefault();
 
-
     }
+  }
+
+  onDrop(event: any, index: number) {
+
 
     if (this.cookieService.get('divDrag') !== '') {
       event.preventDefault();
@@ -130,6 +159,12 @@ export class Lazyspreadsscope2Component {
 
   onDragLeave(event: DragEvent) {
     this.removeDropCss(event);
+  }
+
+  private removeDropCssByHTMLElement(spread: ElementRef) {
+
+    spread.nativeElement.className = spread.nativeElement.className.replace('onDragOver', '');
+
   }
 
   private removeDropCss(event: DragEvent) {
