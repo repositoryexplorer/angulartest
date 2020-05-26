@@ -1,4 +1,4 @@
-<div class="scrollable">
+<div class="scrollable" (click)="onGalleryClick()">
 
   <div id="spreadGallery" class="gallery" >
 
@@ -6,7 +6,7 @@
 
     <div draggable="true"  id = {{item.id}} class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
          [class.selection]= "item.isSelected" [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd($event)"
-         (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)" (click)="onClick(item)">
+         (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)" (click)="onClick($event, item)">
 
       <div id = {{page.id}} class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast">
 

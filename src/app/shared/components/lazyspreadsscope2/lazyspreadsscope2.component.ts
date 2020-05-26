@@ -167,12 +167,19 @@ export class Lazyspreadsscope2Component {
 
   }
 
-  onClick(spread: Spread) {
+  onClick($event: MouseEvent, spread: Spread) {
     this.data.forEach(item => {
         item.isSelected = false;
     });
     console.log(spread.id);
     spread.isSelected = true;
+    $event.stopPropagation();
+  }
+
+  onGalleryClick() {
+    this.data.forEach(item => {
+      item.isSelected = false;
+    });
   }
 }
 
