@@ -12,6 +12,7 @@ import {GallerytestComponent} from './pages/gallerytest/gallerytest.component';
 import {Gallery2Component} from './pages/gallery2/gallery2.component';
 import {FlatplanComponent} from './pages/flatplan/flatplan.component';
 import {Flatplan2Component} from './pages/flatplan2/flatplan2.component';
+import {OldplanningComponent} from './pages/oldplanning/oldplanning.component';
 
 const routes: Routes = [
 
@@ -51,8 +52,8 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: 'flatplan',
-    component: FlatplanComponent,
+    path: ' oldplanning',
+    component: OldplanningComponent,
     canActivate: [ AuthGuardService ]
   },
   {

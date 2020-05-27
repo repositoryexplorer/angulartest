@@ -7,6 +7,7 @@ import {PaginationControlsDirective} from 'ngx-pagination';
 import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
 import { DOCUMENT } from '@angular/common';
 import notify from 'devextreme/ui/notify';
+import {DxContextMenuComponent} from 'devextreme-angular';
 
 @Component({
   selector: 'app-lazyspreadsscope2',
@@ -14,24 +15,31 @@ import notify from 'devextreme/ui/notify';
   styleUrls: ['./lazyspreadsscope2.component.scss']
 })
 export class Lazyspreadsscope2Component {
+  data: Array<Spread>;
+  isDragOfDiv = false;
+  itemsPerPage = 5;
+  p2: any;
+  @ViewChild('templateLabel') templateLabel: ElementRef;
+  @ViewChild('spread') spread: ElementRef;
+  @ViewChild("contextMenuVar") contextMenu: DxContextMenuComponent;
+  currentPage = 1;
   private document: any;
   items: any;
+  isContextMenuVisible: boolean = false;
+
   constructor(private httpClient: HttpClient, private cookieService: CookieService, @Inject(DOCUMENT) document) {
     this.document = document;
 
     this.items = [{
-      text: 'Share',
-      items: [
-        { text: 'Facebook' },
-        { text: 'Twitter' }]
-    },
-      { text: 'Download' },
-      { text: 'Comment' },
-      { text: 'Favorite' }
-    ];
-
-
-
+      text: 'Remove template',
+      //   items: [
+      //     { text: 'Facebook' },
+      //     { text: 'Twitter' }]
+      // },
+      //   { text: 'Download' },
+      //   { text: 'Comment' },
+      //   { text: 'Favorite' }
+    } ];
 
     this.httpClient
       // ?_start=' + (page * this.pageSize) + '&_end=' + ((page * this.pageSize) + this.pageSize)
@@ -46,21 +54,13 @@ export class Lazyspreadsscope2Component {
 
   }
 
-
-  itemClick(e) {
+  itemClick(e: any, spreadId: number, pageId: number) {
     if (!e.itemData.items) {
-      notify("The \"" + e.itemData.text + "\" item was clicked", "success", 1500);
+      let templateElement: any = this.document.getElementById('templateBox' + spreadId.toString() + '_' + pageId.toString());
+      templateElement.style = 'opacity: 0.0';
+      notify("Template was removed", "success", 1500);
     }
   }
-
-  data: Array<Spread>;
-  isDragOfDiv = false;
-  itemsPerPage = 5;
-  p2: any;
-  @ViewChild('templateLabel') templateLabel: ElementRef;
-  @ViewChild('spread') spread: ElementRef;
-
-  currentPage = 1;
 
   drop2(event: CdkDragDrop<Spread>) {
     moveItemInArray(this.data, event.previousIndex, event.currentIndex);
@@ -100,22 +100,16 @@ export class Lazyspreadsscope2Component {
     this.removeDropCss(event);
   }
 // =======================================================
+
   allowDrop2(event: DragEvent) {
 
 
     if (this.cookieService.get('divDrag') !== '') {
       let trg: any = event.currentTarget;
-
       if (trg.className.indexOf('onDragOver') === -1){
         trg.className += ' onDragOver';
       }
-
-     // style.border = 'solid 1px green';
-      //trg.style.opacity = '0.2';
-
-
       event.preventDefault();
-
     }
   }
 

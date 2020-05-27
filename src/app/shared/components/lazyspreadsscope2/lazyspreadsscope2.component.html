@@ -8,7 +8,7 @@
          [class.selection]= "item.isSelected" [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd($event)"
          (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)" (click)="onClick($event, item)">
 
-      <div id = 'page{{page.id}}' class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast"
+      <div id = 'page{{item.id}}{{page.id}}' class="page height298" *ngFor="let page of item.pages; first as isFirst; last as isLast" [class.border-right]="isFirst && !isLast"
            (dragover)="allowDropOnPage($event)"
            (drop)="onDropOnPage($event, item.id, page.id)">
 
@@ -20,8 +20,10 @@
   <dx-context-menu
     [dataSource]="items"
     [width]="200"
-    target="#page{{page.id}}"
-    (onItemClick)="itemClick($event)">
+    target="#page{{item.id}}{{page.id}}"
+    (onItemClick)="itemClick($event, item.id, page.id)"
+    >
+
   </dx-context-menu>
 <!--  <div style="background-color: black; color: white; width: 12px" >X</div>-->
         <img id="righPage" [class.hide]="!(page.orientation==1 || (isLast && item.pages.length>1))" src="/assets/img/rightpage.png" class="image-right"/>

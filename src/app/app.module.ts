@@ -40,10 +40,11 @@ import { Flatplan2Component } from './pages/flatplan2/flatplan2.component';
 import { PrintpreviewComponent } from './pages/flatplan2/printpreview/printpreview.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {FormsModule} from "@angular/forms";
+import { OldplanningComponent } from './pages/oldplanning/oldplanning.component';
 
 @NgModule({
   declarations: [AppComponent, GallerytestComponent, Gallery2Component, FlatplanComponent, FlatplantoolbarComponent,
-    TemplatesgridComponent, BucketsgridComponent, SpreadsgalleryComponent, LazyspreadsComponent, Lazyspreadsscope2Component, Flatplan2Component, PrintpreviewComponent,
+    TemplatesgridComponent, BucketsgridComponent, SpreadsgalleryComponent, LazyspreadsComponent, Lazyspreadsscope2Component, Flatplan2Component, PrintpreviewComponent, OldplanningComponent,
     ],
     imports: [
         BrowserModule,
