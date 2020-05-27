@@ -220,8 +220,14 @@ background-color: whitesmoke;
 }
 
 .onDragOver {
-  opacity: 0.2;
-  border: 1px dotted lightgreen;
+  opacity: 0.3;
+  border: 2px dashed green;
+  height: 302px;
+}
+
+.onDragOver2 {
+  opacity: 0.3;
+  border: 2px dashed green;
 }
 
 .onItemDrop {

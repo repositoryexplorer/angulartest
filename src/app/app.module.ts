@@ -13,13 +13,13 @@ import { AppRoutingModule } from './app-routing.module';
 import {TreeTestService} from './shared/services/treetest.service';
 import { GallerytestComponent } from './pages/gallerytest/gallerytest.component';
 import {
-    DxContextMenuModule,
-    DxDataGridModule, DxLoadPanelModule,
-    DxScrollViewModule,
-    DxTileViewModule,
-    DxToolbarModule,
-    DxTreeListModule,
-    DxTreeViewModule
+  DxContextMenuModule,
+  DxDataGridModule, DxLoadPanelModule,
+  DxScrollViewModule,
+  DxTileViewModule,
+  DxToolbarModule, DxTooltipModule,
+  DxTreeListModule,
+  DxTreeViewModule
 } from 'devextreme-angular';
 import { Gallery2Component } from './pages/gallery2/gallery2.component';
 import { DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule } from 'devextreme-angular';
@@ -60,7 +60,7 @@ import {AngularSplitModule} from "angular-split";
     DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
     DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
     ScrollingModule, DragDropModule,
-    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule, DxContextMenuModule, AngularSplitModule.forRoot()
+    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule, DxContextMenuModule, AngularSplitModule.forRoot(), DxTooltipModule
   ],
   providers: [AuthService, ScreenService, AppInfoService, TreeTestService, ShowcontentService, CookieService],
   bootstrap: [AppComponent],

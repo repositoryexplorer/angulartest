@@ -26,6 +26,7 @@ export class Lazyspreadsscope2Component {
   private document: any;
   items: any;
   isContextMenuVisible: boolean = false;
+  tooltipVisible: boolean = false;
 
   constructor(private httpClient: HttpClient, private cookieService: CookieService, @Inject(DOCUMENT) document) {
     this.document = document;
@@ -83,6 +84,8 @@ export class Lazyspreadsscope2Component {
         '  text-align: center;\n' +
         '  overflow: hidden;\n' +
         '  background-color: white;\'>' + label + '</div>';
+
+      this.removeDropCss(event);
     }
   }
 
@@ -90,6 +93,10 @@ export class Lazyspreadsscope2Component {
 
   allowDrop(event: DragEvent) {
     if (this.cookieService.get('droppedData') !== '') {
+      let trg: any = event.currentTarget;
+      if (trg.className.indexOf('onDragOver2') === -1){
+        trg.className += ' onDragOver2';
+      }
       event.preventDefault();
     }
   }
@@ -120,11 +127,12 @@ export class Lazyspreadsscope2Component {
   }
 
   allowDropOnPage(event: DragEvent) {
-
-
     if (this.cookieService.get('droppedTemplate') !== '') {
+      let trg: any = event.currentTarget;
+      if (trg.className.indexOf('onDragOver2') === -1){
+        trg.className += ' onDragOver2';
+      }
       event.preventDefault();
-
     }
   }
 
@@ -139,7 +147,7 @@ export class Lazyspreadsscope2Component {
     return arr; // for testing
   }
 
-  onDropOnPage(event: any, index: number, index2: number) {
+  onDropOnPage(event: DragEvent, index: number, index2: number) {
     console.log('inside dropsssss');
     if (this.cookieService.get('droppedTemplate') !== '') {
 
@@ -152,7 +160,7 @@ export class Lazyspreadsscope2Component {
 
 
       event.preventDefault();
-
+      this.removeDropCss(event);
     }
   }
 
@@ -196,6 +204,7 @@ export class Lazyspreadsscope2Component {
     //trg.style.border = '1px dotted red';
     //trg.style.opacity = '1.0';
     trg.className = trg.className.replace('onDragOver', '');
+    trg.className = trg.className.replace('onDragOver2', '');
    // trg.removeClass('onDragOver');
   }
   onKeyUp(value: number) {
@@ -251,8 +260,13 @@ export class Lazyspreadsscope2Component {
     });
   }
 
-  onDragEndOfTemplate($event: DragEvent) {
+  onDragEndOfTemplate(event: DragEvent) {
     this.cookieService.delete("droppedData");
+    this.removeDropCss(event);
+  }
+
+  toggleTooltipVisible() {
+    this.tooltipVisible = !this.tooltipVisible;
   }
 }
 
