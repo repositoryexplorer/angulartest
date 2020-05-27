@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {ShowcontentService} from '../../shared/services/showcontent.service';
+import {IOutputData} from "angular-split/lib/interface";
+
 
 @Component({
   selector: 'app-flatplan2',
@@ -47,6 +49,7 @@ export class Flatplan2Component {
   onHidden(e: any) {
 
   }
+
 
 
 }

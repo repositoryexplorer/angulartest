@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~9.1.4",
     "@angular/platform-browser-dynamic": "~9.1.4",
     "@angular/router": "~9.1.4",
+    "angular-split": "^3.0.3",
     "angular2-uuid": "^1.1.1",
     "devextreme": "20.1-stable",
     "devextreme-angular": "20.1-stable",

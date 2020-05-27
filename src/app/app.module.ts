@@ -41,26 +41,27 @@ import { PrintpreviewComponent } from './pages/flatplan2/printpreview/printprevi
 import { NgxPaginationModule } from 'ngx-pagination';
 import {FormsModule} from "@angular/forms";
 import { OldplanningComponent } from './pages/oldplanning/oldplanning.component';
+import {AngularSplitModule} from "angular-split";
 
 @NgModule({
   declarations: [AppComponent, GallerytestComponent, Gallery2Component, FlatplanComponent, FlatplantoolbarComponent,
     TemplatesgridComponent, BucketsgridComponent, SpreadsgalleryComponent, LazyspreadsComponent, Lazyspreadsscope2Component, Flatplan2Component, PrintpreviewComponent, OldplanningComponent,
     ],
-    imports: [
-        BrowserModule,
-        SideNavOuterToolbarModule,
-        SideNavInnerToolbarModule,
-        SingleCardModule,
-        FooterModule,
-        LoginFormModule,
-        AppRoutingModule,
-        HttpClientModule,
-        DxTileViewModule,
-        DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
-        DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
-        ScrollingModule, DragDropModule,
-        BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule, DxContextMenuModule
-    ],
+  imports: [
+    BrowserModule,
+    SideNavOuterToolbarModule,
+    SideNavInnerToolbarModule,
+    SingleCardModule,
+    FooterModule,
+    LoginFormModule,
+    AppRoutingModule,
+    HttpClientModule,
+    DxTileViewModule,
+    DxTemplateModule, DxButtonModule, DxPopupModule, DxPopoverModule, DxDraggableModule, DxToolbarModule, DxiColumnModule,
+    DxoRowDraggingModule, DxoPagingModule, DxoPagerModule, DxoFilterRowModule, DxDataGridModule, DxTreeViewModule,
+    ScrollingModule, DragDropModule,
+    BrowserAnimationsModule, DxTreeListModule, NgxPaginationModule, FormsModule, DxScrollViewModule, DxLoadPanelModule, DxContextMenuModule, AngularSplitModule.forRoot()
+  ],
   providers: [AuthService, ScreenService, AppInfoService, TreeTestService, ShowcontentService, CookieService],
   bootstrap: [AppComponent],
 })

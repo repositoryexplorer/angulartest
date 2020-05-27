@@ -33,3 +33,54 @@
   height: 90%;
 }
 
+as-split.as-transition.as-init:not(.as-dragging) ::ng-deep > .as-split-gutter,
+as-split.as-transition.as-init:not(.as-dragging) > .as-split-area {
+  transition: flex-basis 1.5s !important;
+}
+as-split.as-disabled ::ng-deep > .as-split-gutter {
+  cursor: pointer !important;
+}
+
+.ex-b as-split {
+
+  .as-split-area {
+    background-color: lightgrey;
+
+    & > p {
+      padding: 5px;
+    }
+  }
+
+  ::ng-deep .as-split-gutter {
+    background-color: grey !important;
+    position: relative;
+  }
+
+  ::ng-deep .as-split-gutter-icon {
+    background-image: none !important;
+    background-color: black;
+    transition: opacity .3s;
+    opacity: 0;
+    position: absolute;
+  }
+
+  ::ng-deep .as-split-gutter.as-dragged .as-split-gutter-icon,
+  ::ng-deep .as-split-gutter-icon:hover {
+    opacity: .1;
+  }
+
+  &.as-horizontal {
+    ::ng-deep .as-split-gutter-icon {
+      width: 17px !important;
+      left: -8px;
+      right: 8px;
+    }
+  }
+  &.as-vertical {
+    ::ng-deep .as-split-gutter-icon {
+      height: 17px !important;
+      top: -8px;
+      bottom: 8px;
+    }
+  }
+}

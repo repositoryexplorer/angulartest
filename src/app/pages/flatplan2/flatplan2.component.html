@@ -1,6 +1,6 @@
 <div class="main" #flatplan2>
   <app-flatplantoolbar class="flatToolbar"></app-flatplantoolbar>
-  <div class="layout">
+  <div class="layout split-example ex-b">
     <dx-load-panel
       [position]="{ of: '#flatplan2' }"
       [closeOnOutsideClick] = "true"
@@ -14,22 +14,39 @@
       shadingColor="rgba(0,0,0,0.4)">
     </dx-load-panel>
 
-    <div class="publications">
-      <div>
+    <as-split [gutterSize]="3"
+              [gutterDblClickDuration]="1000"
+              direction="horizontal"
+              [useTransition]="true"
+              [disabled]="false">
+
+      <as-split-area size="70" minSize="5" [order]="0">
+        <div class="publications">
+        <div>
 
           <app-lazyspreadsscope2 *ngIf="basic"></app-lazyspreadsscope2>
           <app-printpreview *ngIf="print"></app-printpreview>
+        </div>
       </div>
-    </div>
+      </as-split-area>
+      <as-split-area size="30" minSize="5" [order]="1" *ngIf="contentVisible==false">
 
-    <div class="content2" *ngIf="contentVisible==false">
-      <div style="overflow-y: auto; height: 49%;  min-height: 300px; max-height: 300px;">
-        <app-bucketsgrid class="bucketsGrid"></app-bucketsgrid>
-      </div>
-      <div style="height: 49%;">
-        <app-templatesgrid ></app-templatesgrid>
-      </div>
-    </div>
+
+        <div class="content2">
+          <div style="overflow-y: auto; height: 49%;  min-height: 300px; max-height: 300px;">
+            <app-bucketsgrid class="bucketsGrid"></app-bucketsgrid>
+          </div>
+          <div style="height: 49%;">
+            <app-templatesgrid ></app-templatesgrid>
+          </div>
+        </div>
+      </as-split-area>
+
+    </as-split>
+
+
+
+
 
   </div>
 </div>
