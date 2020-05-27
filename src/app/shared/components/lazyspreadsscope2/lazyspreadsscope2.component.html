@@ -28,7 +28,7 @@
 <!--  <div style="background-color: black; color: white; width: 12px" >X</div>-->
         <img id="righPage" [class.hide]="!(page.orientation==1 || (isLast && item.pages.length>1))" src="/assets/img/rightpage.png" class="image-right"/>
 </div>
-        <div id="0" *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
+        <div id="0" *ngIf="page.pageTemplate==0" class="pt-single-small" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)" (dragend)="onDragEndOfTemplate($event)"></div>
         <div id="1" *ngIf="page.pageTemplate==1" class="pt-single-big" (dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
         <div id="2" *ngIf="page.pageTemplate==2" class="pt-triple">
           <div id = "onDropTre1" class="tri1"(dragover)="allowDrop($event)" (drop)="onItemDrop($event)"></div>
