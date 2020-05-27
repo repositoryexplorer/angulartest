@@ -62,8 +62,8 @@ export class PrintpreviewComponent {
 
   onDragStart($event: DragEvent, house: House2, index: number) {
     if (this.cookieService.get('draggedGalleryItem') === '') {
-      this.cookieService.set('draggedGalleryItem', house.ID);
-      this.cookieService.set('galleryItemDragIndex', index);
+      this.cookieService.set('draggedGalleryItem', String(house.ID));
+      this.cookieService.set('galleryItemDragIndex', String(index));
     }
   }
 
