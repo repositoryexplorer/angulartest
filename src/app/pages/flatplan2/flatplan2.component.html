@@ -22,9 +22,13 @@
       </div>
     </div>
 
-    <div class="content" *ngIf="contentVisible==false">
-      <app-bucketsgrid class="fiftyPercentHeight bucketsGrid"></app-bucketsgrid>
-      <app-templatesgrid class="fiftyPercentHeight"></app-templatesgrid>
+    <div class="content2" *ngIf="contentVisible==false">
+      <div style="overflow-y: auto; height: 49%;  min-height: 300px; max-height: 300px;">
+        <app-bucketsgrid class="bucketsGrid"></app-bucketsgrid>
+      </div>
+      <div style="height: 49%;">
+        <app-templatesgrid ></app-templatesgrid>
+      </div>
     </div>
 
   </div>

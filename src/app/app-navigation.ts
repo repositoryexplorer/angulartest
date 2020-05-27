@@ -24,10 +24,10 @@ export const navigation = [
         text: 'Gallery with details',
         path: '/gallery2',
       },
-      // {
-      //   text: 'Old planning',
-      //   path: '/ oldplanning',
-      // },
+      {
+        text: 'Old planning',
+        path: '/ oldplanning',
+      },
       {
         text: 'Flat planning (scope 2)',
         path: '/flatplan2',
