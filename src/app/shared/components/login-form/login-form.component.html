@@ -1,4 +1,4 @@
-<dx-validation-group >
+<dx-validation-group #signin>
     <div class="login-header">
         <div class="title">{{appInfo.title}}</div>
         <div>Sign In to your account</div>
@@ -19,8 +19,20 @@
         </dx-text-box>
     </div>
 
-    <div class="dx-field">
+    <div class="dx-field" >
         <dx-button [elementAttr]="{ id: 'loginButton' }" type="default" text="Login" (onClick)="onLoginClick($event)" width="100%"></dx-button>
     </div>
+
+  <dx-load-panel
+    [position]="{ of: '#signin' }"
+    [(visible)] = "isVisible"
+    [showIndicator]="true"
+    [showPane]="true"
+    [shading]="true"
+    [closeOnOutsideClick]="false"
+    (onShown)="onShown($event)"
+    (onHidden)="onHidden($event)"
+    shadingColor="rgba(0,0,0,0.4)">
+  </dx-load-panel>
 
 </dx-validation-group>

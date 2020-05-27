@@ -10,7 +10,7 @@ export class AuthService {
 
   constructor(private router: Router) {}
 
-  logIn(login: string, passord: string) {
+  logIn(login: string, passord: string, isVisible: boolean) {
     if (login === '' || (login === 'dev' && passord === 'priintdev')) {
       this.loggedIn = true;
       this.router.navigate(['/']);
@@ -19,6 +19,7 @@ export class AuthService {
     //  this.router.navigate(['/login-form']);
     }
     this.loggedSubject.next(this.loggedIn);
+
   }
 
   logOut() {

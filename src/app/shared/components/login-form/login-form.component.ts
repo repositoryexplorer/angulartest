@@ -9,6 +9,7 @@ import { DxTextBoxModule } from 'devextreme-angular/ui/text-box';
 import { DxValidatorModule } from 'devextreme-angular/ui/validator';
 import { DxValidationGroupModule } from 'devextreme-angular/ui/validation-group';
 import { Subscription } from 'rxjs';
+import {DxLoadPanelModule} from "devextreme-angular";
 
 @Component({
   selector: 'app-login-form',
@@ -20,6 +21,7 @@ export class LoginFormComponent {
   password = '';
   loginText = '';
   subscription: Subscription;
+  isVisible: boolean = false;
 
   constructor(private authService: AuthService, public appInfo: AppInfoService) {
     this.subscription = authService.getLoggedSubject().subscribe(
@@ -28,8 +30,24 @@ export class LoginFormComponent {
       });
   }
 
+  onShown(e: any) {
+
+    setTimeout(() => {
+      this.isVisible = false;
+    }, 600);
+  }
+
+  onHidden(e: any) {
+
+  }
+
   onLoginClick(args) {
-    this.authService.logIn(this.login, this.password);
+    this.isVisible = true;
+    setTimeout(() => {
+      this.authService.logIn(this.login, this.password, this.isVisible);
+    }, 200);
+
+
   }
 }
 @NgModule({
@@ -40,7 +58,8 @@ export class LoginFormComponent {
     DxCheckBoxModule,
     DxTextBoxModule,
     DxValidatorModule,
-    DxValidationGroupModule
+    DxValidationGroupModule,
+    DxLoadPanelModule
   ],
   declarations: [ LoginFormComponent ],
   exports: [ LoginFormComponent ]
