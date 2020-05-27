@@ -1,6 +1,12 @@
 <div class="images">
-  <div *ngFor="let house of houses">
-    <div (click)="showHouse(house)" class="item-content">
+  <div *ngFor="let house of galleryItems; index as i"
+       draggable="true"
+       (dragstart)="onDragStart($event, house, i)"
+       (dragover)="onDragOver($event, house)"
+       (dragend)="onDragEnd($event)"
+       (drop)="onDrop($event, house, i)"
+       (dragleave)="onDragLeave($event)">
+    <div (click)="showHouse(house)" class="item-content" >
       <img src="{{house.Image}}" />
       <div class="item-options">
         <div>

@@ -142,3 +142,8 @@
 ::ng-deep .dx-button.favorites .dx-icon {
   color: #fff;
 }
+
+.onDragOver {
+  opacity: 0.2;
+  border: 1px dotted lightgreen;
+}
