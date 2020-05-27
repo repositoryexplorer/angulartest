@@ -67,19 +67,22 @@ export class Lazyspreadsscope2Component {
   }
 
   onItemDrop(event: DragEvent) {
-    event.preventDefault();
-    let ble: string = this.cookieService.get('droppedData');
-    let curTrg: any = event.currentTarget;
-    curTrg.backgroundColor = 'yellow';
+    if (this.cookieService.get("droppedData") !== '') {
+      event.preventDefault();
+      let ble: string = this.cookieService.get('droppedData');
+      let curTrg: any = event.currentTarget;
+      curTrg.backgroundColor = 'yellow';
 
-    const id = ble.substring(0, ble.indexOf('|'));
-    const label = ble.substring(ble.indexOf('|') + 1);
+      const id = ble.substring(0, ble.indexOf('|'));
+      const label = ble.substring(ble.indexOf('|') + 1);
 
-    curTrg.innerHTML = curTrg.innerHTML + '<div id=' + id + ' style=\'  border: 1px solid lightgray;\n' +
-      '  widht:100%;\n' +
-      '  height: 22px;\n' +
-      '  text-align: center;\n' +
-      '  background-color: white;\'>' + label + '</div>';
+      curTrg.innerHTML = curTrg.innerHTML + '<div id=' + id + ' title="' + label + '" style=\'  border: 1px solid lightgray;\n' +
+        '  widht:100%;\n' +
+        '  height: 22px;\n' +
+        '  text-align: center;\n' +
+        ' overflow: hidden;\n' +
+        '  background-color: white;\'>' + label + '</div>';
+    }
   }
 
   allowDrop(event: DragEvent) {
@@ -243,6 +246,10 @@ export class Lazyspreadsscope2Component {
     this.data.forEach(item => {
       item.isSelected = false;
     });
+  }
+
+  onDragEndOfTemplate($event: DragEvent) {
+    this.cookieService.delete("droppedData");
   }
 }
 
