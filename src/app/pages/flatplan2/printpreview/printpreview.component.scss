@@ -7,7 +7,8 @@
 
 
 ::ng-deep .large-text {
-  font-size: 24px;
+  font-size: 18px;
+
   color: #ff6a50;
 }
 
@@ -42,6 +43,7 @@
   left: 0;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 ::ng-deep .images .item-content:hover > .item-options {
@@ -67,6 +69,7 @@
   border-bottom: 2px solid #f05b41;
   border-left: 2px solid #f05b41;
   border-right: 2px solid #f05b41;
+
 }
 
 ::ng-deep .item-content .item-options .address,
