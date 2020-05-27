@@ -76,14 +76,17 @@ export class Lazyspreadsscope2Component {
       const id = ble.substring(0, ble.indexOf('|'));
       const label = ble.substring(ble.indexOf('|') + 1);
 
-      curTrg.innerHTML = curTrg.innerHTML + '<div id=' + id + ' title="' + label + '" style=\'  border: 1px solid lightgray;\n' +
+      curTrg.innerHTML = curTrg.innerHTML +
+        '<div id=' + id + ' title="' + label + '" style=\'  border: 1px solid lightgray;\n' +
         '  widht:100%;\n' +
         '  height: 22px;\n' +
         '  text-align: center;\n' +
-        ' overflow: hidden;\n' +
+        '  overflow: hidden;\n' +
         '  background-color: white;\'>' + label + '</div>';
     }
   }
+
+
 
   allowDrop(event: DragEvent) {
     if (this.cookieService.get('droppedData') !== '') {
@@ -251,5 +254,9 @@ export class Lazyspreadsscope2Component {
   onDragEndOfTemplate($event: DragEvent) {
     this.cookieService.delete("droppedData");
   }
+}
+
+function onBucketLabelDragStart(event: any) {
+  alert("drag start");
 }
 
