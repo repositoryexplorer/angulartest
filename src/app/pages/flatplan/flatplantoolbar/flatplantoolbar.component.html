@@ -1,6 +1,6 @@
 <div class="toolbar">
 
-  <button id = "assingContent" type="button" class="button button1" (click)="onAssignClick()">Assign content</button>
+  <button #button id = "assingContent" type="button" class="button button1" [class.buttonGreen]="isGreen" [class.buttonWhite]="!isGreen"(click)="onAssignClick()">Assign content</button>
   <img #basic id="basic" width=32 height=32 src="assets/img/basic.png" class="imgIco" (click)="basicClicked()"/>
   <img #print id="print" width=32 height=32 src="assets/img/print_gray.png" class="imgIco" (click)="printClicked()"/>
 

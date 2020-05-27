@@ -1,7 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 
 import {ShowcontentService} from '../../../shared/services/showcontent.service';
-import {Flatplan2Component} from '../../flatplan2/flatplan2.component';
 
 @Component({
   selector: 'app-flatplantoolbar',
@@ -11,16 +10,16 @@ import {Flatplan2Component} from '../../flatplan2/flatplan2.component';
 export class FlatplantoolbarComponent  {
 
   items: any[];
-  flatplan2 : Flatplan2Component;
-
+  isGreen: boolean = true;
   @ViewChild('basic') basicImg: ElementRef;
   @ViewChild('print') printImg: ElementRef;
-  constructor(private service: ShowcontentService, private f: Flatplan2Component) {
-    this.flatplan2 = f;
+  constructor(private service: ShowcontentService) {
+
   }
 
   onAssignClick() {
     this.service.showHideContentClick();
+    this.isGreen = !this.isGreen;
   }
 
   public printClicked() {
@@ -47,8 +46,6 @@ export class FlatplantoolbarComponent  {
       this.basicImg.nativeElement.src = src.replace("_gray", "");
       this.printImg.nativeElement.src = printSrc.replace(".png", "_gray.png");
       this.service.perspectiveChanged('basic');
-      this.flatplan2.setVisible(true);
-      this.flatplan2.setLoadingTime(500);
     }
   }
 }
