@@ -24,6 +24,7 @@ export class PrintpreviewComponent {
   popupVisible = false;
   ADD_TO_FAVORITES = "Add to Favorites";
   REMOVE_FROM_FAVORITES = "Remove from Favorites";
+  isVisible: boolean = true;
 
   constructor(service: Gallery2ServiceService, private cookieService: CookieService) {
     this.galleryItems = service.getSpreads();
@@ -102,6 +103,17 @@ export class PrintpreviewComponent {
     }
     arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
     return arr; // for testing
+  }
+
+  onShown(e: any) {
+
+    setTimeout(() => {
+      this.isVisible = false;
+    }, 600);
+  }
+
+  onHidden(e: any) {
+
   }
 }
 

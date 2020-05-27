@@ -11,6 +11,14 @@ export class Flatplan2Component {
   basic: boolean = true;
   print: boolean = false;
   isVisible: boolean = true;
+  loadingTime: number = 1500;
+  setVisible(isVisible: boolean) {
+    this.isVisible = isVisible;
+  }
+
+  setLoadingTime(loadingTime: number){
+    this.loadingTime = loadingTime;
+  }
 
   constructor(private service: ShowcontentService) {
     service.getSubject().subscribe(
@@ -33,7 +41,7 @@ export class Flatplan2Component {
   onShown(e: any) {
     setTimeout(() => {
       this.isVisible = false;
-    }, 1500);
+    }, this.loadingTime);
   }
 
   onHidden(e: any) {

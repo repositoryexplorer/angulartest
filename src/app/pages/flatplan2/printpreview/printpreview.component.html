@@ -1,4 +1,16 @@
-<div class="images">
+<div class="images" #images2>
+  <dx-load-panel
+    [position]="{ of: '#images2' }"
+    [(visible)] = "isVisible"
+    [showIndicator]="true"
+    [showPane]="true"
+    [shading]="true"
+    [closeOnOutsideClick]="false"
+    (onShown)="onShown($event)"
+    (onHidden)="onHidden($event)"
+    shadingColor="rgba(0,0,0,0.4)">
+  </dx-load-panel>
+
   <div *ngFor="let house of galleryItems; index as i"
        draggable="true"
        (dragstart)="onDragStart($event, house, i)"
