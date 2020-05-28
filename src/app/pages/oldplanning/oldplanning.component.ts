@@ -15,9 +15,9 @@ export class OldplanningComponent {
   sessionId: string = '';
   postUrl: any;
   constructor(private sanitizer: DomSanitizer, private httpClient: HttpClient) {
-    var options = { params: {username: 'dev',  password: 'priintdev', db: 'aio'}};
+    // var options = { headers: {Access-Control-Allow-Origin: '*'}, params: {username: 'dev',  password: 'priintdev', db: 'aio'}};
     this.postUrl = sanitizer.bypassSecurityTrustResourceUrl('http://localhost:40080/CometServer/linksServlet');
-    this.httpClient.post('http://localhost:40080/CometServer/linksServlet', '', options).toPromise()
+    this.httpClient.post('http://localhost:40080/CometServer/linksServlet', '', {}).toPromise()
       .then((data: any) => {
         this.sessionId = this.getSessionIdFromData(data);
         console.log(this.sessionId + " ");

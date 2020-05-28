@@ -4,7 +4,7 @@
 
 
 
-    <div #spread draggable="true"  id ='spread{{item.id}}' class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
+    <div draggable="true"  id ='spread{{item.id}}' class="gallery-item double" *ngFor="let item of data | paginate: { itemsPerPage: itemsPerPage, currentPage: p2 }; index as i"
          [class.selection]= "item.isSelected" [class.page-right]="item.pages.length==1 && item.pages[0].orientation==1" (dragstart)="onDragStart($event, i)" (dragend)="onDragEnd($event)"
          (dragover)="allowDrop2($event)" (drop)="onDrop($event, i)" (dragleave)="onDragLeave($event)" (dragexit)="onDragLeave($event)" (click)="onClick($event, item)">
 
