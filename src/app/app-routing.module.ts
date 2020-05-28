@@ -52,7 +52,7 @@ const routes: Routes = [
     canActivate: [ AuthGuardService ]
   },
   {
-    path: ' oldplanning',
+    path: 'oldplanning',
     component: OldplanningComponent,
     canActivate: [ AuthGuardService ]
   },
