@@ -26,7 +26,7 @@ export const navigation = [
       },
       {
         text: 'Old planning',
-        path: '/ oldplanning',
+        path: '/oldplanning',
       },
       {
         text: 'Flat planning (scope 2)',
